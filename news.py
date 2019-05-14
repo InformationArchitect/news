@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
-HTML_WRAP =
-'''\
+import psycopg2
+
+HTML_WRAP = '''\
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,10 +21,10 @@ HTML_WRAP =
 </html>
 '''
 
-def funcname(self, parameter_list):
+def mostPopularArticles(self, parameter_list):
     pass
 
-def funcname(self, parameter_list):
+def mostPopularAuthors(self, parameter_list):
     pass
 
 if __name__ == "__main__":
