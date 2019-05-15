@@ -3,35 +3,50 @@
 
 import psycopg2
 
-DBNAME = "news"
+DATABASE = "news"
 
 def mostPopularArticles():
-    db = psycopg2.connect(database=DBNAME)
+    db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
-    c.execute("")
+    c.execute("select \
+                SUBSTRING (path, 10), count(*)\
+                from log where path != '/' group by SUBSTRING (path, 10);")
     articles = c.fetchall()
     db.close()
     return articles
 
 def mostPopularAuthors():
-    db = psycopg2.connect(database=DBNAME)
+    db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
-    c.execute()
+    c.execute("")
     authors = c.fetchall()
     db.close()
     return authors
 
 
 def requestErrors():
-    db = psycopg2.connect(database=DBNAME)
+    db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
-    c.execute()
+    c.execute('''
+    select errors.day, 100*cast(errors.count as FLOAT)/successes.count as "Error_Rate" from (
+            select day,count(*) from (select date_trunc('day', time) as "day", SUBSTRING (status, 1, 3) from log where status
+            != '200 OK' order by time asc) as "errors" group  by day order by day asc
+        ) as "errors", 
+        (
+            select day,count(*) from (select date_trunc('day', time) as "day", SUBSTRING (status, 1, 3) from log order by time asc)
+            as "successes" group by day order by day asc
+        ) as "successes"
+        where 100*cast(errors.count as FLOAT)/successes.count > 0.01;
+    ''')
     errors = c.fetchall()
     db.close()
     return errors
 
 
 if __name__ == "__main__":
-    mostPopularArticles()
-    mostPopularAuthors()
-    requestErrors()
+    print(mostPopularArticles())
+    print(mostPopularAuthors())
+    print(requestErrors())
+
+
+    
