@@ -15,7 +15,7 @@ def mostPopularArticles():
                         FROM log WHERE path != '/' AND status = '200 OK' GROUP BY SUBSTRING (path, 10)
                         ORDER BY count(*) DESC LIMIT 3
                     ) AS mostpopular, articles
-                    WHERE mospopular.slug = articles.slug
+                    WHERE mostpopular.slug = articles.slug
                     ORDER BY mostpopular.numviews DESC;
                 ''')
     articles = c.fetchall()
