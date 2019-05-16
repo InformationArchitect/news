@@ -8,14 +8,14 @@ DATABASE = "news"
 def mostPopularArticles():
     db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
-    c.execute('''select articles.title, mostPopular.numViews from (
+    c.execute('''select articles.title, mostpopular.numviews from (
                 select 
-                    SUBSTRING (path, 10) as "slug", count(*) as "numViews"
+                    SUBSTRING (path, 10) as "slug", count(*) as "numviews"
                     from log where path != '/' and status = '200 OK' group by SUBSTRING (path, 10)
                     order by count(*) desc limit 3
-                ) as "mostPopular", articles
-                where log.slug = articles.slug
-                order by mostPopular.numViews DESC;
+                ) as mostpopular, articles
+                where mospopular.slug = articles.slug
+                order by mostpopular.numviews DESC;
                 ''')
     articles = c.fetchall()
     db.close()
