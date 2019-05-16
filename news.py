@@ -9,14 +9,14 @@ def mostPopularArticles():
     db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
     c.execute('''
-                select articles.title, mostpopular.numviews from (
-                    select 
-                        SUBSTRING (path, 10) as "slug", count(*) as "numviews"
-                        from log where path != '/' and status = '200 OK' group by SUBSTRING (path, 10)
-                        order by count(*) desc limit 3
-                    ) as mostpopular, articles
-                    where mospopular.slug = articles.slug
-                    order by mostpopular.numviews DESC;
+                SELECT articles.title, mostpopular.numviews FROM (
+                    SELECT 
+                        SUBSTRING (path, 10) AS "slug", count(*) AS "numviews"
+                        FROM log WHERE path != '/' AND status = '200 OK' GROUP BY SUBSTRING (path, 10)
+                        ORDER BY count(*) DESC LIMIT 3
+                    ) AS mostpopular, articles
+                    WHERE mospopular.slug = articles.slug
+                    ORDER BY mostpopular.numviews DESC;
                 ''')
     articles = c.fetchall()
     db.close()
@@ -52,15 +52,15 @@ def requestErrors():
     db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
     c.execute('''
-                select errors.day, 100*cast(errors.count as FLOAT)/successes.count as "Error_Rate" from (
-                        select day,count(*) from (select date_trunc('day', time) as "day", SUBSTRING (status, 1, 3) from log where status
-                        != '200 OK' order by time asc) as "errors" group  by day order by day asc
-                    ) as "errors", 
+                SELECT errors.day, 100*cast(errors.count AS FLOAT)/successes.count AS "Error_Rate" FROM (
+                        SELECT day,count(*) FROM (select date_trunc('day', time) AS "day", SUBSTRING (status, 1, 3) FROM log WHERE status
+                        != '200 OK' ORDER BY time ASC) AS "errors" GROUP BY day ORDER BY day ASC
+                    ) AS "errors", 
                     (
-                        select day,count(*) from (select date_trunc('day', time) as "day", SUBSTRING (status, 1, 3) from log order by time asc)
-                        as "successes" group by day order by day asc
-                    ) as "successes"
-                    where 100*cast(errors.count as FLOAT)/successes.count > 1;
+                        SELECT day,count(*) FROM (select date_trunc('day', time) AS "day", SUBSTRING (status, 1, 3) FROM log ORDER BY time ASC)
+                        AS "successes" GROUP BY day ORDER BY day ASC
+                    ) AS "successes"
+                    WHERE 100*cast(errors.count AS FLOAT)/successes.count > 1;
     ''')
     errors = c.fetchall()
     db.close()
