@@ -25,7 +25,7 @@ Run `vagrant up` in your terminal to start the virtual machine. Once this is fin
 to connect to your vagrant.
 
 ## Installing News
-Run
+`cd` into your `vagrant` directory and then run
 ```
 git clone https://github.com/TheGrandArchitect/news.git
 ```
@@ -43,7 +43,8 @@ To run News, run the following command
 ```
 python news.py
 ```
-in your terminal. In order to run you must have a recent version of python 3 installed.
+in your terminal. In order to run you must be in your `vagrant` directory in your terminal and
+have a recent version of python 3 installed.
 
 # License
 
