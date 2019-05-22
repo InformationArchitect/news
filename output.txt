@@ -12,50 +12,20 @@ Markoff Chaney -- 84557 views
 
 
 Days Where Error Rates Surpassed 1 Percent
-2016-07-02 -- 1.0% errors
-2016-07-03 -- 1.0% errors
-2016-07-05 -- 1.1% errors
-2016-07-06 -- 1.1% errors
-2016-07-08 -- 1.1% errors
-2016-07-09 -- 1.1% errors
-2016-07-11 -- 1.0% errors
-2016-07-15 -- 1.1% errors
-2016-07-17 -- 3.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.3% errors
-2016-07-17 -- 2.8% errors
-2016-07-19 -- 1.1% errors
-2016-07-21 -- 1.1% errors
-2016-07-22 -- 1.0% errors
-2016-07-24 -- 1.1% errors
-2016-07-25 -- 1.0% errors
-2016-07-26 -- 1.0% errors
-2016-07-28 -- 1.0% errors
-2016-07-30 -- 1.0% errors
+July 02, 2016 -- 1.0% errors
+July 03, 2016 -- 1.0% errors
+July 05, 2016 -- 1.1% errors
+July 06, 2016 -- 1.1% errors
+July 08, 2016 -- 1.1% errors
+July 09, 2016 -- 1.1% errors
+July 11, 2016 -- 1.0% errors
+July 15, 2016 -- 1.1% errors
+July 17, 2016 -- 2.3% errors
+July 19, 2016 -- 1.1% errors
+July 21, 2016 -- 1.1% errors
+July 22, 2016 -- 1.0% errors
+July 24, 2016 -- 1.1% errors
+July 25, 2016 -- 1.0% errors
+July 26, 2016 -- 1.0% errors
+July 28, 2016 -- 1.0% errors
+July 30, 2016 -- 1.0% errors
