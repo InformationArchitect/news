@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
 # code for the logs analysis project
+"""
+A module that executes 3 queries that each provide an insight into a database.
+
+The database is the http request log, authors, and articles of a newspaper.
+
+Returns:
+3 sorted lists of 2 element tuples and accompanying titles
+"""
 
 import psycopg2
 
@@ -15,31 +23,18 @@ SELECT articles.title, mostpopular.numviews FROM (
     ) AS mostpopular, articles
 WHERE mostpopular.slug = articles.slug
 ORDER BY mostpopular.numviews DESC;
-                '''
+'''
+
 QUERY2 = '''
-                SELECT popular.name, SUM(popular.numviews)
-                AS views FROM (
-                    SELECT authors.name, idpopular.slug,
-                    idpopular.numviews FROM (
-                        SELECT articles.author, articles.slug,
-                        mostpopular.numviews FROM (
-                            SELECT
-                                SUBSTRING (path, 10) AS "slug",
-                                count(*) AS "numviews"
-                                FROM log WHERE path != '/' AND
-                                status = '200 OK' GROUP BY
-                                SUBSTRING (path, 10)
-                                ORDER BY count(*) DESC
-                            ) AS mostpopular, articles
-                            WHERE mostpopular.slug = articles.slug
-                            ORDER BY mostpopular.numviews DESC
-                        ) AS idpopular, authors
-                        WHERE idpopular.author = authors.id
-                        ORDER BY numviews
-                    ) AS popular
-                    GROUP BY popular.name
-                    ORDER BY views DESC;
-                '''
+SELECT authors.name AS "name", count(*) AS "views" FROM
+articles, authors, log
+WHERE SUBSTRING (log.path, 10) = articles.slug
+AND articles.author = authors.id
+AND status = '200 OK'
+GROUP BY name
+ORDER BY views DESC;
+'''
+
 QUERY3 = '''
 SELECT TO_CHAR(errors.day, 'FMMonth DD, YYYY') as "date",
 100*CAST(errors.count AS FLOAT)/total.count
@@ -62,7 +57,17 @@ AND errors.day = total.day
 ORDER BY date ASC;
 '''
 
+
 def executeQuery(query):
+    """
+    Execute a SQL query which is provided as a parameter and return the result.
+
+    Parameters:
+    query -- the SQL query as a string
+
+    Returns:
+    a sorted list of 2 element tuples containing the data the query selected
+    """
     db = psycopg2.connect(dbname=DATABASE)
     c = db.cursor()
     c.execute(query)
