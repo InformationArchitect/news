@@ -12,20 +12,4 @@ Markoff Chaney -- 84557 views
 
 
 Days Where Error Rates Surpassed 1 Percent
-July 02, 2016 -- 1.0% errors
-July 03, 2016 -- 1.0% errors
-July 05, 2016 -- 1.1% errors
-July 06, 2016 -- 1.1% errors
-July 08, 2016 -- 1.1% errors
-July 09, 2016 -- 1.1% errors
-July 11, 2016 -- 1.0% errors
-July 15, 2016 -- 1.1% errors
-July 17, 2016 -- 2.3% errors
-July 19, 2016 -- 1.1% errors
-July 21, 2016 -- 1.1% errors
-July 22, 2016 -- 1.0% errors
-July 24, 2016 -- 1.1% errors
-July 25, 2016 -- 1.0% errors
-July 26, 2016 -- 1.0% errors
-July 28, 2016 -- 1.0% errors
-July 30, 2016 -- 1.0% errors
+July 17, 2016 -- 2.26% errors
